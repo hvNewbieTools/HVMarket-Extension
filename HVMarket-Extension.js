@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         HVMarket Extension
-// @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Всякие штуки для хвмаркета!
 // @author       Sparroff
 // @match        https://hvmarket.xyz/*
 // @icon         https://www.google.com/s2/favicons?domain=hvmarket.xyz
+// @namespace    https://github.com/hvNewbieTools
+// @updateURL    https://raw.githubusercontent.com/hvNewbieTools/HVMarket-Extension/main/HVMarket-Extension.js
+// @downloadURL  https://raw.githubusercontent.com/hvNewbieTools/HVMarket-Extension/main/HVMarket-Extension.js
 // @grant        GM.addStyle
 // @grant        GM_getValue
 // @grant        GM_setValue
