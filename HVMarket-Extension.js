@@ -40,28 +40,32 @@
         button.id = "PriceUpd";
         button.innerHTML = "HVUtils | Copy price";
         space.appendChild(button);
-
         let list = [
-            "Wispy Catalyst","Diluted Catalyst","Regular Catalyst","Robust Catalyst","Vibrant Catalyst","Coruscating Catalyst","Scrap Cloth","Scrap Leather",
-            "Scrap Metal","Scrap Wood","Energy Cell","Low-Grade Cloth","Mid-Grade Cloth","High-Grade Cloth","Low-Grade Leather","Mid-Grade Leather","High-Grade Leather",
-            "Low-Grade Metals","Mid-Grade Metals","High-Grade Metals","Low-Grade Wood","Mid-Grade Wood","High-Grade Wood","Crystallized Phazon","Shade Fragment","Repurposed Actuator",
-            "Defense Matrix Modulator","Binding of Slaughter","Binding of Balance","Binding of Isaac","Binding of Destruction","Binding of Focus","Binding of Friendship","Binding of Protection",
-            "Binding of Warding","Binding of the Fleet","Binding of the Barrier","Binding of the Nimble","Binding of Negation","Binding of the Ox","Binding of the Raccoon","Binding of the Cheetah",
-            "Binding of the Turtle","Binding of the Fox","Binding of the Owl","Binding of Surtr","Binding of Niflheim","Binding of Mjolnir","Binding of Freyr","Binding of Heimdall","Binding of Fenrir",
-            "Binding of the Elementalist","Binding of the Heaven-sent","Binding of the Demon-fiend","Binding of the Curse-weaver","Binding of the Earth-walker","Binding of Dampening","Binding of Stoneskin",
-            "Binding of Deflection","Binding of the Fire-eater","Binding of the Frost-born","Binding of the Thunder-child","Binding of the Wind-waker","Binding of the Thrice-blessed","Binding of the Spirit-ward"
+            "Wispy Catalyst @ 90","Diluted Catalyst @ 450","Regular Catalyst @ 900","Robust Catalyst @ 2250","Vibrant Catalyst @ 4500","Coruscating Catalyst @ 9000","Scrap Cloth @ 90","Scrap Leather @ 90",
+            "Scrap Metal @ 90","Scrap Wood @ 90","Energy Cell @ 180","Low-Grade Cloth @ 10","Mid-Grade Cloth @ 400","High-Grade Cloth @ 12500","Low-Grade Leather @ 10","Mid-Grade Leather @ 10","High-Grade Leather @ 50",
+            "Low-Grade Metals @ 10","Mid-Grade Metals @ 50","High-Grade Metals @ 150","Low-Grade Wood @ 10","Mid-Grade Wood @ 150","High-Grade Wood @ 2500","Crystallized Phazon @ 300000","Shade Fragment @ 1500",
+            "Repurposed Actuator @ 25000","Defense Matrix Modulator @ 1000","Binding of Slaughter @ 55000","Binding of Balance @ 100","Binding of Isaac @ 1000","Binding of Destruction @ 55000","Binding of Focus @ 100",
+            "Binding of Friendship @ 100","Binding of Protection @ 40000","Binding of Warding @ 1000","Binding of the Fleet @ 10000","Binding of the Barrier @ 500","Binding of the Nimble @ 500","Binding of Negation @ 10",
+            "Binding of the Ox @ 3000","Binding of the Raccoon @ 3000","Binding of the Cheetah @ 35000","Binding of the Turtle @ 250","Binding of the Fox @ 35000","Binding of the Owl @ 35000","Binding of Surtr @ 10",
+            "Binding of Niflheim @ 10","Binding of Mjolnir @ 10","Binding of Freyr @ 10","Binding of Heimdall @ 10","Binding of Fenrir @ 10","Binding of the Elementalist @ 100","Binding of the Heaven-sent @ 10",
+            "Binding of the Demon-fiend @ 10","Binding of the Curse-weaver @ 10","Binding of the Earth-walker @ 10","Binding of Dampening @ 500","Binding of Stoneskin @ 10","Binding of Deflection @ 10",
+            "Binding of the Fire-eater @ 10","Binding of the Frost-born @ 10","Binding of the Thunder-child @ 10","Binding of the Wind-waker @ 10","Binding of the Thrice-blessed @ 10","Binding of the Spirit-ward @ 10"
         ];
         button.onclick = function (event) {
             let clip = "// [Materials] price is used for calculating the profits in [Monster Lab], the total cost of upgrading equipment in [Upgrade] and what salvaging in [Equipment Shop] is worth\n\n";
-            //let table = document.getElementsByClassName("itg")[0];
-            let rows = table.rows.length;
             for (let s = 0; s < list.length; s++) {
-                for (let t = 1; t < rows; t++) {
-                    if (list[s] == table.rows[t].cells[1].children[0].innerHTML) {
-                        clip += list[s] + " @ " + pricefix(table.rows[t].cells[3].innerHTML);
-                        if (s != list.length - 1) clip += "\n";
+                let chk=0;
+                for (let t = 1; t < table.rows.length; t++) {
+                    if (list[s].split(' @ ')[0] == table.rows[t].cells[1].children[0].innerHTML) {
+                        clip += list[s].split(' @ ')[0] + " @ " + pricefix(table.rows[t].cells[3].innerHTML);
+                        chk=1;
+                        break;
                     }
                 }
+                if(chk==0) {
+                    clip += list[s].split(' @ ')[0] + " @ " + list[s].split(' @ ')[1];
+                }
+                if (s != list.length - 1) clip += "\n";
             }
             GM_setClipboard(clip);
             button.classList.add("PriceUpdK");
@@ -304,4 +308,5 @@ GM.addStyle(
 #PriceUpd{text-align:center;background-color:#edebdf;color:#5c0d11;position:absolute;right:203px;top:118px;width:100px;height:10px;padding:2px 5px;border:solid 2px #5c0d11;border-radius:3px;font-size:9px;cursor:pointer}\
 #PriceUpd:hover{background-color: #5c0d11;color: #edebdf;} \
 .PriceUpdK{background-color: #5c0d11 !important;color: #edebdf !important;} \
+table.itg tr:hover td {background-color: #b9ad6926;} \
 ");
