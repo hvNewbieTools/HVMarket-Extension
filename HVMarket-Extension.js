@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         HVMarket Extension
-// @version      0.1
+// @version      0.1.1
 // @description  Всякие штуки для хвмаркета!
 // @author       Sparroff
 // @match        https://hvmarket.xyz/*
