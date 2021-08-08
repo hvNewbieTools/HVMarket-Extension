@@ -107,7 +107,7 @@
         function hidenone(table, check){
             for(let i=0;i<table.rows.length;i++){
                 table.rows[i].classList.add(colorized(table.rows[i].cells[1].innerHTML));
-                if(i>0) console.log(table.rows[i].cells[1].children[0].innerHTML+'  '+Math.round((Number(table.rows[i].cells[4].getAttribute('data-low')) - Number(table.rows[i].cells[3].children[0].value))*10)/10);
+                //if(i>0) console.log(table.rows[i].cells[1].children[0].innerHTML+'  '+Math.round((Number(table.rows[i].cells[4].getAttribute('data-low')) - Number(table.rows[i].cells[3].children[0].value))*10)/10);
                 if(table.rows[i].cells[2].innerHTML=='None') {
                     if(check==1) table.rows[i].classList.add("custhide");
                     else if(check==0) table.rows[i].classList.remove("custhide");
